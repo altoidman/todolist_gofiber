@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>home</title>
+        <style>
+        th {
+            padding: 5px;
+            border: 1 solid #ccc;
+        }
+
+        .pagination .active{
+            background: black;
+            color: white;
+        }
+    </style>
+    </head>
+    <body>
+
+     <p style="font-size: 17px;">Welcome! <a style="color:darkorange;">{{.username}}</a></p>
+{{if .err}}
+<h5 style="color:red;">{{.err}}</h5>
+{{end}}
+{{if .success}}
+<h5 style="color:green;">{{.success}}</h5>
+{{end}}
+    <hr>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created</th>
+            <th>DELETE</th>
+        </tr>
+        {{range .lists}}
+        <tr>
+            <th>{{.ID}}</th>
+            <th>{{.Title}}</th>
+            <th>{{.Text}}</th>
+            <th>{{.Created}}</th>
+            <th><a style="color:white; background: red; padding: 5px; border-radius: 6px;" href="/DELETE?delete={{.Url}}">delete</a></th>
+        </tr>
+        {{end}}
+    </table>
+
+    <hr>
+
+    <form action="/" method="post">
+        <p>title</p>
+        <input type="text" name="title" >
+        <p>Content</p>
+        <textarea name="content" cols="30" rows="4"></textarea>
+        <button type="submit">upload</button>
+    </form>
+
+    <br>
+    <a href="/logout">exit! </a>
+    </body>
+</html>
