@@ -22,7 +22,6 @@ func main() {
 		Storage: storage,
 		KeyGenerator: utils.UUIDv4,
 		KeyLookup: "cookie:_session",
-		Expiration: 24 * time.Hour,
 		CookieHTTPOnly: true,
 		CookieSameSite: "Lax",
 	})
