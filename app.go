@@ -89,7 +89,8 @@ func main() {
 		if title == "" && content == ""{
 			return c.Render("task",fiber.Map{"err":"please check data is empty" ,"username":sess.Get("username").(string)})
 		}
-		_,err = db.Exec("INSERT INTO lists (username,title,text,created,url) VALUES(?,?,?,?,?)",username,title,content,created,utils.UUIDv4()+utils.UUIDv4()+utils.UUIDv4())
+		rand := utils.UUIDv4()+utils.UUIDv4()+utils.UUIDv4()
+		_,err = db.Exec("INSERT INTO lists (username,title,text,created,url) VALUES(?,?,?,?,?)",username,title,content,created,rand)
 
 		if err != nil{
 			return c.Render("task",fiber.Map{"err":"error for save data????","username":sess.Get("username").(string)})
