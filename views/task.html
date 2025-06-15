@@ -26,6 +26,7 @@
 <h5 style="color:green;">{{.success}}</h5>
 {{end}}
     <hr>
+    {{if .lists}}
     <table>
         <tr>
             <th>ID</th>
@@ -46,6 +47,10 @@
     </table>
 
     <hr>
+{{else}}
+<p>Not found</p>
+
+{{end}}
 
     <form action="/" method="post">
         <p>title</p>
