@@ -1,3 +1,5 @@
+// full secure of XSS SQLINJECT OR ATTACK 51% THIS CODE NOT FOR PRODUCTION 
+
 package main
 
 import (
