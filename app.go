@@ -152,11 +152,11 @@ func main() {
 		username := c.FormValue("username")
 		password := c.FormValue("password")
 		confirmPass := c.FormValue("confirmPass")
-		if username == ""{
+		if username == "" {
 			return c.Render("register", fiber.Map{"err": "please add your username is empty!"})
-		} else if password == ""{
+		} else if password == "" {
 			return c.Render("register", fiber.Map{"err": "please add your password is empty!"})
-		} else if confirmPass == ""{
+		} else if confirmPass == "" {
 			return c.Render("register", fiber.Map{"err": "please confirm password is empty!"})
 		}
 		validU := regexp.MustCompile(`^[a-zA-Z1-9]+$`).MatchString(username)
@@ -175,7 +175,7 @@ func main() {
 			return c.Render("register", fiber.Map{"err": "error password is not Match"})
 		}
 		var count int
-		err = db.Get(&count,"SELECT COUNT(username) FROM users WHERE username = ?",username)
+		err = db.Get(&count, "SELECT COUNT(username) FROM users WHERE username = ?", username)
 		if err != nil {
 			log.Println(err)
 		}
@@ -183,12 +183,12 @@ func main() {
 			return c.Render("register", fiber.Map{"err": "Please use other username or change your username"})
 		}
 		created := time.Now().Format("Jan 02, 2006 15:04:05")
-		_,err := db.Exec("INSERT INTO users (username,password,created) VALUES(?,?,?)",username,password,created)
+		_, err := db.Exec("INSERT INTO users (username,password,created) VALUES(?,?,?)", username, password, created)
 		if err != nil {
 			return c.Render("register", fiber.Map{"err": "error: please try again in other time"})
 		}
 		return c.Redirect("/login")
-		
+
 	})
 
 	app.Listen(":8080")
