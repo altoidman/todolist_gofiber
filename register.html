@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>register</title>
+    </head>
+    <body>
+        {{if .err}}
+        <p style="color:red;">{{.err}}</p>
+        {{end}}
+        <form action="/register" method="post">
+            <p>Username</p>
+            <input type="text" name="username">
+            <p>Password</p>
+            <input type="password" name="password">
+            <p>Confirm Pass</p>
+            <input type="password" name="confirmPass">
+            <br>
+            <a href="/login">Ihave aready account!</a><br>
+            <button type="submit">created Now</button>
+        </form>
+    </body>
+</html>
