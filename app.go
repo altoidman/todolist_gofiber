@@ -1,4 +1,4 @@
-// full secure of XSS SQLINJECT OR ATTACK 51% THIS CODE NOT FOR PRODUCTION 
+// full secure of XSS SQLINJECT But THIS CODE NOT FOR PRODUCTION 
 
 package main
 
